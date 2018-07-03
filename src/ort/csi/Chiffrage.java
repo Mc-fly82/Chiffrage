@@ -9,19 +9,6 @@ import java.util.Scanner;
 public class Chiffrage {
 
 
-
-    public static int primeGen() {
-        int primeNumbers[] = {
-                2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97
-        };
-
-        int n = (int) (Math.random() * primeNumbers.length);
-
-        return primeNumbers[n];
-    }
-
-    
-
     public static int commonKey(int p, int q) {
 
         return q * p;
@@ -36,18 +23,7 @@ public class Chiffrage {
 
     }
 
-    public static int privateKeyPart(int e, int m) {
-        int d;
 
-        for ( d = e ; d < 10000000; d++) {
-
-            if (((e * d) % m) == 1) {
-                break;
-            }
-        }
-        return d;
-    }
-    
 
 
     public static int publicKeyPart(int m)
@@ -56,7 +32,7 @@ public class Chiffrage {
         int index = 0;
         for(int i=1;i<=m;i++)
         {
-            if(pgcd(i,m) == true)
+            if(Util.pgcd(i,m) == true)
             {
                 tab_prime[index] = i;
                 index++;
@@ -92,28 +68,26 @@ public class Chiffrage {
         return e;
     }
 
-    public static boolean pgcd(int nb1, int nb2)
-    {
-        BigInteger bigE = BigInteger.valueOf(nb1);
-        BigInteger bigM = BigInteger.valueOf(nb2);
-        int result = bigE.gcd(bigM).intValue();
-        if(result == 1)
-        {
-            return true;
+    public static int privateKeyPart(int e, int m) {
+        int d;
+
+        for ( d=e+1 ; d< m*10; d++) {
+
+            if (e*d% m == 1) break;
         }
-        else
-        {
-            return false;
-        }
+        return d;
     }
-    
+
+
+
+
 
     /*
     * Encryption
     * */
     public static String encryption(String msg, int e) {
 
-     
+
 
         List<String> myList = new ArrayList<String>(Arrays.asList(msg.split("")));
 
@@ -121,13 +95,13 @@ public class Chiffrage {
         int ascii = (int) character;
 
 
-        
+
        return myList.get(1);
-       
+
 
     }
 
 
 
-    
+
 }

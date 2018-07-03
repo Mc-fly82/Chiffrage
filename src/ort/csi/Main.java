@@ -6,25 +6,26 @@ public class Main {
 
 //        int p = Chiffrage.primeGen();
 //        int q = Chiffrage.primeGen();
-
-
+        System.out.println(Chiffrage.privateKeyPart(97,2184));
         int p = 43;
         int q = 53;
 
         int n = Chiffrage.commonKey(p,q);
         int m = Chiffrage.genM(p,q);
         int e = Chiffrage.publicKeyPart(m);
-        int d = Chiffrage.privateKeyPart(m,e);
+
+        int d = Chiffrage.privateKeyPart(e,m);
         String msgE = Chiffrage.encryption("message",e);
 
 
-        System.out.println(p);
-        System.out.println(q);
-        System.out.println(n);
-        System.out.println(m);
-        System.out.println(e);
-        System.out.println(d);
+        System.out.println("p "+p);
+        System.out.println("q "+q);
+        System.out.println("n "+n);
+        System.out.println("m "+m);
+        System.out.println("e "+e);
+        System.out.println("d "+d);
         System.out.println(msgE);
+
 
     }
     
