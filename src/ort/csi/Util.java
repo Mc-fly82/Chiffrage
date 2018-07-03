@@ -29,4 +29,32 @@ public class Util {
             return false;
         }
     }
+
+
+    public static int asciiConvert(char a) {
+
+        int b = (int) a;
+        return b;
+    }
+
+    public static int[] asciiConvertChaine(String message) {
+        int tab[] = new int[message.length()];
+        String msg = message.toUpperCase();
+        for (int i = 0; i < msg.length(); i++) {
+            tab[i] = asciiConvert(msg.charAt(i));
+        }
+        return tab;
+
+    }
+
+    public static void afficheTableau(int[] tableau) {
+
+        for (int i = 0; i < tableau.length; i++) {
+            System.out.print(tableau[i]);
+        }
+
+    }
+
+
+
 }

@@ -1,6 +1,5 @@
 package ort.csi;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -24,16 +23,11 @@ public class Chiffrage {
     }
 
 
-
-
-    public static int publicKeyPart(int m)
-    {
+    public static int publicKeyPart(int m) {
         int[] tab_prime = new int[2000];
         int index = 0;
-        for(int i=1;i<=m;i++)
-        {
-            if(Util.pgcd(i,m) == true)
-            {
+        for (int i = 1; i <= m; i++) {
+            if (Util.pgcd(i, m) == true) {
                 tab_prime[index] = i;
                 index++;
                 System.out.print(i + " ");
@@ -47,18 +41,15 @@ public class Chiffrage {
 
         int e = 0;
 
-        boolean isInTab=false;
+        boolean isInTab = false;
 
-        while(isInTab != true)
-        {
+        while (isInTab != true) {
 
             System.out.println("Taper un nombre : ");
 
             e = scan.nextInt();
-            for(int i=0;i<=tab_prime.length-1;i++)
-            {
-                if ((int)e == tab_prime[i])
-                {
+            for (int i = 0; i <= tab_prime.length - 1; i++) {
+                if ((int) e == tab_prime[i]) {
                     isInTab = true;
                 }
             }
@@ -71,22 +62,18 @@ public class Chiffrage {
     public static int privateKeyPart(int e, int m) {
         int d;
 
-        for ( d=e+1 ; d< m*10; d++) {
+        for (d = e + 1; d < m * 10; d++) {
 
-            if (e*d% m == 1) break;
+            if (e * d % m == 1) break;
         }
         return d;
     }
 
 
-
-
-
     /*
-    * Encryption
-    * */
+     * Encryption
+     * */
     public static String encryption(String msg, int e) {
-
 
 
         List<String> myList = new ArrayList<String>(Arrays.asList(msg.split("")));
@@ -95,13 +82,10 @@ public class Chiffrage {
         int ascii = (int) character;
 
 
-
-       return myList.get(1);
+        return myList.get(1);
 
 
     }
-
-
 
 
 }
