@@ -13,6 +13,12 @@ public class Chiffrage {
 
         return primeNumbers[n];
     }
+
+    public static int commonKey(int p, int q) {
+
+        return q*p;
+
+    }
     
     public static int PubKeyPart(int p, int q) {
     	
