@@ -9,22 +9,34 @@ public class Chiffrage {
                 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97
         };
 
-        int n = (int) (Math.random()*primeNumbers.length);
+        int n = (int) (Math.random() * primeNumbers.length);
 
         return primeNumbers[n];
     }
 
     public static int commonKey(int p, int q) {
 
-        return q*p;
+        return q * p;
 
     }
-    
+
     public static int PubKeyPart(int p, int q) {
-    	
-		int m;
-		m=(p-1)*(q-1);
-		return m;
-    	
+
+        int m;
+        m = (p - 1) * (q - 1);
+        return m;
+
+    }
+
+    public static int privateKeyPart(int e, int m) {
+        int d;
+
+        for ( d = e ; d < 10000000; d++) {
+
+            if (((e * d) % m) == 1) {
+                break;
+            }
+        }
+        return d;
     }
 }
