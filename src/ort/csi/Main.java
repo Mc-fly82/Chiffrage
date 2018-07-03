@@ -6,10 +6,10 @@ public class Main {
 
 //        test commonKey
 
-        
-        System.out.println("ok");
 
-        
+        System.out.println(Chiffrage.primeGen());
+
+
     }
     
 }
