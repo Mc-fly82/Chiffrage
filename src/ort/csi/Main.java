@@ -6,9 +6,11 @@ public class Main {
 
 //        test commonKey
 
-
-        System.out.println(Chiffrage.primeGen());
-        System.out.println(Chiffrage.PubKeyPart());
+    	int p=Chiffrage.primeGen();
+    	int q=Chiffrage.primeGen();
+        System.out.println(p);
+        System.out.println(q);
+        System.out.println(Chiffrage.PubKeyPart(p, q));
 
 
     }
