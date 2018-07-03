@@ -8,7 +8,7 @@ public class Main {
 
 
         System.out.println(Chiffrage.primeGen());
-        System.out.println(Chiffrage.PubteKeyPart());
+        System.out.println(Chiffrage.PubKeyPart());
 
 
     }

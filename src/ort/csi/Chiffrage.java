@@ -14,8 +14,11 @@ public class Chiffrage {
         return primeNumbers[n];
     }
     
-    public static int PubteKeyPart() {
-		int m 
+    public static int PubteKeyPart(int p, int q) {
+    
+		int m;
+		m=(p-1)*(q-1);
+		return m;
     	
     }
 }
