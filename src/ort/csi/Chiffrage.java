@@ -1,5 +1,6 @@
 package ort.csi;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -73,21 +74,54 @@ public class Chiffrage {
     /*
      * Encryption
      * */
-    public static int[] encryption(String msg, int e) {
+    public static int[] encryption(String msg, int e, int n) {
 
 
-        int[] tab2 = new int[2000];
 
-        int[] tab = Util.asciiConvertChaine(msg);
 
-        for (int i = 0; i < tab.length; i++) {
+        int[] asciiTab = new int[1];
+        int[] asciiEncryptTab = new int[1];
 
-            tab2[i] = tab[i] ^ e % 2;
+        asciiTab[0] = 667;
+
+
+        System.out.println("log:"  + asciiTab[0]);
+
+        for (int i = 0; i < asciiTab.length; i++) {
+
+            BigInteger mBig = BigInteger.valueOf(asciiTab[i]);
+            BigInteger nBig = BigInteger.valueOf(n);
+            BigInteger eBig = BigInteger.valueOf(e);
+
+            
+            BigInteger mod = mBig.modPow(eBig,nBig );
+
+            asciiEncryptTab[i] =  mod.intValue();
         }
 
-        return tab2;
+
+        return asciiEncryptTab;
 
     }
 
+    public static int[] decrypt(int[] asciiEncryptTab, int d, int n) {
+
+        for (int i = 0; i < asciiEncryptTab.length; i++) {
+
+            BigInteger mBig = BigInteger.valueOf(asciiEncryptTab[i]);
+            BigInteger nBig = BigInteger.valueOf(n);
+            BigInteger dBig = BigInteger.valueOf(d);
+
+            asciiEncryptTab[i] = asciiEncryptTab[i] ^ d % n;
+
+            BigInteger mod = mBig.modPow(dBig,nBig );
+
+            asciiEncryptTab[i] =  mod.intValue();
+        }
+
+        return asciiEncryptTab;
+    }
 
 }
+
+

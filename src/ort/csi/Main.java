@@ -29,9 +29,18 @@ public class Main {
 
         String msg = "message";
 
-        int[] msgE = Chiffrage.encryption(msg, e);
 
-        Util.afficheTableau(msgE);
+
+
+
+        int[] asciiEncryptTab = Chiffrage.encryption(msg, e,n);
+
+        Util.afficheTableau(asciiEncryptTab);
+
+        int[] asciidecryptTab = Chiffrage.decrypt(asciiEncryptTab, d,n);
+
+        Util.afficheTableau(asciidecryptTab);
+
 
     }
 

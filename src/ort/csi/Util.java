@@ -40,6 +40,7 @@ public class Util {
     public static int[] asciiConvertChaine(String message) {
         int tab[] = new int[message.length()];
         String msg = message.toUpperCase();
+
         for (int i = 0; i < msg.length(); i++) {
             tab[i] = asciiConvert(msg.charAt(i));
         }
@@ -50,8 +51,9 @@ public class Util {
     public static void afficheTableau(int[] tableau) {
 
         for (int i = 0; i < tableau.length; i++) {
-            System.out.print(tableau[i]);
+            System.out.print(tableau[i] + ",");
         }
+            System.out.print("\n");
 
     }
 
