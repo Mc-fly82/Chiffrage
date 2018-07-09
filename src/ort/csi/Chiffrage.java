@@ -37,17 +37,17 @@ public class Chiffrage {
         System.out.println("");
 
 
-        Scanner scan = new Scanner(System.in);
+//        Scanner scan = new Scanner(System.in);
 
-        int e = 0;
+        int e = 97;
 
         boolean isInTab = false;
 
         while (isInTab != true) {
 
-            System.out.println("Taper un nombre : ");
+//            System.out.println("Taper un nombre : ");
 
-            e = scan.nextInt();
+
             for (int i = 0; i <= tab_prime.length - 1; i++) {
                 if ((int) e == tab_prime[i]) {
                     isInTab = true;
@@ -73,17 +73,19 @@ public class Chiffrage {
     /*
      * Encryption
      * */
-    public static String encryption(String msg, int e) {
+    public static int[] encryption(String msg, int e) {
 
 
-        List<String> myList = new ArrayList<String>(Arrays.asList(msg.split("")));
+        int[] tab2 = new int[2000];
 
-        char character = 'a';
-        int ascii = (int) character;
+        int[] tab = Util.asciiConvertChaine(msg);
 
+        for (int i = 0; i < tab.length; i++) {
 
-        return myList.get(1);
+            tab2[i] = tab[i] ^ e % 2;
+        }
 
+        return tab2;
 
     }
 

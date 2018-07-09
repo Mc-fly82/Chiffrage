@@ -7,8 +7,8 @@ public class Main {
 
 
 
-        int p = Chiffrage.primeGen();
-        int q = Chiffrage.primeGen();
+//        int p = Util.primeGen();
+//        int q = Util.primeGen();
         System.out.println(Chiffrage.privateKeyPart(97, 2184));
         int p = 43;
         int q = 53;
@@ -18,7 +18,6 @@ public class Main {
         int e = Chiffrage.publicKeyPart(m);
 
         int d = Chiffrage.privateKeyPart(e, m);
-        String msgE = Chiffrage.encryption("message", e);
 
 
         System.out.println("p " + p);
@@ -29,9 +28,10 @@ public class Main {
         System.out.println("d " + d);
 
         String msg = "message";
-        int[] tab = Util.asciiConvertChaine(msg);
-        Util.afficheTableau(tab);
 
+        int[] msgE = Chiffrage.encryption(msg, e);
+
+        Util.afficheTableau(msgE);
 
     }
 
