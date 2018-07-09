@@ -27,13 +27,13 @@ public class Main {
         System.out.println("e " + e);
         System.out.println("d " + d);
 
-        String msg = "message";
+        String msg = "BONJOUR";
 
 
 
 
 
-        int[] asciiEncryptTab = Chiffrage.encryption(msg, e,n);
+        int[] asciiEncryptTab = Chiffrage.encryption(msg,3, e,n);
 
         Util.afficheTableau(asciiEncryptTab);
 

@@ -71,21 +71,44 @@ public class Chiffrage {
     }
 
 
+    public static int[] packetage(int[] tab, int v) {
+
+        String c = "";
+
+        for (int i = 0; i < tab.length; i++) {
+            c = c + String.valueOf(tab[i]);
+        }
+        while (c.length() % v != 0) {
+            c = c + "0";
+        }
+        int k = 0;
+        int[] tabpack = new int[c.length() / v];
+        for (int j = 0; j < c.length(); j = j + v) {
+            String x = c.substring(j, j + v);
+            tabpack[k] = Integer.valueOf(x);
+            k = k + 1;
+
+        }
+        return tabpack;
+    }
+
+
     /*
      * Encryption
      * */
-    public static int[] encryption(String msg, int e, int n) {
+    public static int[] encryption(String msg,int v, int e, int n) {
+
+
+        int [] asciiConvertChaine =  Util.asciiConvertChaine(msg);
+
+
+        int[] asciiEncryptTab = new int[2000];
+        int[] asciiTab = new int[2000];
+        asciiTab =  packetage(asciiConvertChaine,v);
 
 
 
-
-        int[] asciiTab = new int[1];
-        int[] asciiEncryptTab = new int[1];
-
-        asciiTab[0] = 667;
-
-
-        System.out.println("log:"  + asciiTab[0]);
+        System.out.println("log:" + asciiTab[0]);
 
         for (int i = 0; i < asciiTab.length; i++) {
 
@@ -93,10 +116,10 @@ public class Chiffrage {
             BigInteger nBig = BigInteger.valueOf(n);
             BigInteger eBig = BigInteger.valueOf(e);
 
-            
-            BigInteger mod = mBig.modPow(eBig,nBig );
 
-            asciiEncryptTab[i] =  mod.intValue();
+            BigInteger mod = mBig.modPow(eBig, nBig);
+
+            asciiEncryptTab[i] = mod.intValue();
         }
 
 
@@ -114,10 +137,11 @@ public class Chiffrage {
 
             asciiEncryptTab[i] = asciiEncryptTab[i] ^ d % n;
 
-            BigInteger mod = mBig.modPow(dBig,nBig );
+            BigInteger mod = mBig.modPow(dBig, nBig);
 
-            asciiEncryptTab[i] =  mod.intValue();
+            asciiEncryptTab[i] = mod.intValue();
         }
+
 
         return asciiEncryptTab;
     }
